@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsTruck
 {
-    public abstract class Vehicle 
+    public abstract class Vehicle : ITransport
     {
 
         protected float _startPosX;

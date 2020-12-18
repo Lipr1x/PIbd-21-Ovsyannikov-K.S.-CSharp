@@ -18,23 +18,3 @@ G:\Univer\Prog\WindowsFormsShip\obj\Debug\WindowsFormsTruck.pdb
 G:\Univer\Prog\WindowsFormsShip\bin\Debug\WindowsFormsTruck.exe.config
 G:\Univer\Prog\WindowsFormsShip\bin\Debug\WindowsFormsTruck.exe
 G:\Univer\Prog\WindowsFormsShip\bin\Debug\WindowsFormsTruck.pdb
-G:\Univer\Prog\WindowsFormsShip — копия\obj\Debug\WindowsFormsShip.csprojAssemblyReference.cache
-G:\Univer\Prog\WindowsFormsShip — копия\obj\Debug\WindowsFormsTruck.FormShip.resources
-G:\Univer\Prog\WindowsFormsShip — копия\obj\Debug\WindowsFormsTruck.Properties.Resources.resources
-G:\Univer\Prog\WindowsFormsShip — копия\obj\Debug\WindowsFormsShip.csproj.GenerateResource.cache
-G:\Univer\Prog\WindowsFormsShip — копия\obj\Debug\WindowsFormsShip.csproj.CoreCompileInputs.cache
-G:\Univer\Prog\WindowsFormsShip — копия\obj\Debug\WindowsFormsTruck.exe
-G:\Univer\Prog\WindowsFormsShip — копия\obj\Debug\WindowsFormsTruck.pdb
-G:\Univer\Prog\WindowsFormsShip — копия\bin\Debug\WindowsFormsTruck.exe.config
-G:\Univer\Prog\WindowsFormsShip — копия\bin\Debug\WindowsFormsTruck.exe
-G:\Univer\Prog\WindowsFormsShip — копия\bin\Debug\WindowsFormsTruck.pdb
-G:\Univer\Prog\на заливку\WindowsFormsShip1 — копия\bin\Debug\WindowsFormsTruck.exe.config
-G:\Univer\Prog\на заливку\WindowsFormsShip1 — копия\bin\Debug\WindowsFormsTruck.exe
-G:\Univer\Prog\на заливку\WindowsFormsShip1 — копия\bin\Debug\WindowsFormsTruck.pdb
-G:\Univer\Prog\на заливку\WindowsFormsShip1 — копия\obj\Debug\WindowsFormsShip.csprojAssemblyReference.cache
-G:\Univer\Prog\на заливку\WindowsFormsShip1 — копия\obj\Debug\WindowsFormsTruck.FormShip.resources
-G:\Univer\Prog\на заливку\WindowsFormsShip1 — копия\obj\Debug\WindowsFormsTruck.Properties.Resources.resources
-G:\Univer\Prog\на заливку\WindowsFormsShip1 — копия\obj\Debug\WindowsFormsShip.csproj.GenerateResource.cache
-G:\Univer\Prog\на заливку\WindowsFormsShip1 — копия\obj\Debug\WindowsFormsShip.csproj.CoreCompileInputs.cache
-G:\Univer\Prog\на заливку\WindowsFormsShip1 — копия\obj\Debug\WindowsFormsTruck.exe
-G:\Univer\Prog\на заливку\WindowsFormsShip1 — копия\obj\Debug\WindowsFormsTruck.pdb

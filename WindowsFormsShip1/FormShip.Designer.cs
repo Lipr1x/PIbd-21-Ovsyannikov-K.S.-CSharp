@@ -34,6 +34,7 @@
             this.buttonDown = new System.Windows.Forms.Button();
             this.buttonLeft = new System.Windows.Forms.Button();
             this.buttonRight = new System.Windows.Forms.Button();
+            this.buttonCreateTruck = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxShip)).BeginInit();
             this.SuspendLayout();
             // 
@@ -104,11 +105,22 @@
             this.buttonRight.UseVisualStyleBackColor = true;
             this.buttonRight.Click += new System.EventHandler(this.buttonMove_Click);
             // 
+            // buttonCreateTruck
+            // 
+            this.buttonCreateTruck.Location = new System.Drawing.Point(140, 12);
+            this.buttonCreateTruck.Name = "buttonCreateTruck";
+            this.buttonCreateTruck.Size = new System.Drawing.Size(112, 23);
+            this.buttonCreateTruck.TabIndex = 8;
+            this.buttonCreateTruck.Text = "Создать корабль";
+            this.buttonCreateTruck.UseVisualStyleBackColor = true;
+            this.buttonCreateTruck.Click += new System.EventHandler(this.buttonCreateShip_Click);
+            // 
             // FormShip
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(884, 461);
+            this.Controls.Add(this.buttonCreateTruck);
             this.Controls.Add(this.buttonRight);
             this.Controls.Add(this.buttonLeft);
             this.Controls.Add(this.buttonDown);
@@ -131,6 +143,7 @@
         private System.Windows.Forms.Button buttonDown;
         private System.Windows.Forms.Button buttonLeft;
         private System.Windows.Forms.Button buttonRight;
+        private System.Windows.Forms.Button buttonCreateTruck;
     }
 }
 
