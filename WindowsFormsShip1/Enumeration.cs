@@ -9,8 +9,11 @@ namespace WindowsFormsTruck
     public enum Enumeration
     {
         Up,
+
         Down,
+
         Left,
+
         Right
     }
 }

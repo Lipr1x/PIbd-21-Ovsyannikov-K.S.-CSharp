@@ -8,12 +8,13 @@ namespace WindowsFormsTruck
 {
     static class Program
     {
+
         [STAThread]
         static void Main()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run((Form)new FormShip());
+            Application.Run((Form)new FormParking());
         }
     }
 }

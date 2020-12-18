@@ -9,8 +9,7 @@ namespace WindowsFormsTruck
 {
     public class Ship : Vehicle
     {
-
-        protected readonly int shipWidth = 112;
+        protected readonly int shipWidth = 112; 
         protected readonly int shipHeight = 42; 
 
         public Ship(int maxSpeed, float weight, Color mainColor)
@@ -20,7 +19,6 @@ namespace WindowsFormsTruck
             MainColor = mainColor;
         }
 
-        
         protected Ship(int maxSpeed, float weight, Color mainColor, int shipWidth, int shipHeight)
         {
             MaxSpeed = maxSpeed;
@@ -36,6 +34,7 @@ namespace WindowsFormsTruck
             int shipDownIndent = 12; 
             switch (enumeration)
             {
+ 
                 case Enumeration.Right:
                     if (_startPosX + step < _pictureWidth - shipWidth)
                     {
@@ -76,16 +75,17 @@ namespace WindowsFormsTruck
             Brush brBlue = new SolidBrush(Color.LightBlue);
             Brush brWhite = new SolidBrush(Color.White);
 
-            g.FillRectangle(brGray, _startPosX, _startPosY, 110, 20);
-            g.FillEllipse(brGray, _startPosX + 100, _startPosY , 20, 20);
-            g.FillEllipse(brGray, _startPosX + -10, _startPosY, 20, 20);
 
-            g.FillRectangle(brGray, _startPosX+50, _startPosY-40, 20, 40);
+            g.FillRectangle(br, _startPosX, _startPosY, 110, 20);
+            g.FillEllipse(br, _startPosX + 100, _startPosY , 20, 20);
+            g.FillEllipse(br, _startPosX + -10, _startPosY, 20, 20);
+
+            g.FillRectangle(br, _startPosX+50, _startPosY-40, 20, 40);
             g.FillRectangle(brWhite, _startPosX + 55, _startPosY - 30, 10, 10);
 
-            g.FillEllipse(br, _startPosX + 0, _startPosY+18, 30, 15);
-            g.FillEllipse(br, _startPosX + 35, _startPosY + 18, 30, 15);
-            g.FillEllipse(br, _startPosX + 70, _startPosY + 18, 30, 15);
+            g.FillEllipse(brGray, _startPosX + 0, _startPosY+18, 30, 15);
+            g.FillEllipse(brGray, _startPosX + 35, _startPosY + 18, 30, 15);
+            g.FillEllipse(brGray, _startPosX + 70, _startPosY + 18, 30, 15);
 
             g.DrawLine(greypen, _startPosX , _startPosY - 10, _startPosX , _startPosY+5 );
             g.DrawLine(slimpen, _startPosX-20 , _startPosY - 10, _startPosX+5 , _startPosY-10 );

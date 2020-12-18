@@ -12,21 +12,19 @@ namespace WindowsFormsTruck
 {
     public partial class FormShip : Form
     {
-
         private ITransport ship;
 
-        /// <summary>
-        /// Конструктор
-        /// </summary>
         public FormShip()
         {
             InitializeComponent();
         }
 
-        /// <summary>
-        /// Метод отрисовки корабля
-        /// </summary>
-        private void Draw()
+        public void SetCar(ITransport ship)
+        {
+            this.ship = ship;
+            Draw();
+        }
+            private void Draw()
         {
             Bitmap bmp = new Bitmap(pictureBoxShip.Width, pictureBoxShip.Height);
             Graphics gr = Graphics.FromImage(bmp);

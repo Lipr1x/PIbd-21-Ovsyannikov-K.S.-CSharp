@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsTruck
 {
-
     class WarShip : Ship
     {
 
@@ -50,7 +49,7 @@ namespace WindowsFormsTruck
                     g.FillEllipse(brWhite, _startPosX + 20, _startPosY - 35, 10, 10);
                     g.DrawLine(slimpen, _startPosX , _startPosY + 10, _startPosX + 115, _startPosY + 10);
                 }
-                g.FillEllipse(brGray, _startPosX + 90, _startPosY - 15, 25, 25);
+                g.FillEllipse(brDop, _startPosX + 90, _startPosY - 15, 25, 25);
                 g.DrawLine(pen, _startPosX + 110, _startPosY - 10, _startPosX + 140, _startPosY - 40);
             }
         }
