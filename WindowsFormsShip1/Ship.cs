@@ -18,7 +18,7 @@ namespace WindowsFormsTruck
             Weight = weight;
             MainColor = mainColor;
         }
-
+        
         protected Ship(int maxSpeed, float weight, Color mainColor, int shipWidth, int shipHeight)
         {
             MaxSpeed = maxSpeed;
@@ -34,7 +34,7 @@ namespace WindowsFormsTruck
             int shipDownIndent = 12; 
             switch (enumeration)
             {
- 
+
                 case Enumeration.Right:
                     if (_startPosX + step < _pictureWidth - shipWidth)
                     {
@@ -74,7 +74,6 @@ namespace WindowsFormsTruck
             Brush brGray = new SolidBrush(Color.Gray);
             Brush brBlue = new SolidBrush(Color.LightBlue);
             Brush brWhite = new SolidBrush(Color.White);
-
 
             g.FillRectangle(br, _startPosX, _startPosY, 110, 20);
             g.FillEllipse(br, _startPosX + 100, _startPosY , 20, 20);

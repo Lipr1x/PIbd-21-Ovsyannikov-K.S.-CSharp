@@ -12,6 +12,7 @@ namespace WindowsFormsTruck
 {
     public partial class FormShip : Form
     {
+
         private ITransport ship;
 
         public FormShip()
@@ -19,11 +20,12 @@ namespace WindowsFormsTruck
             InitializeComponent();
         }
 
-        public void SetCar(ITransport ship)
+        public void SetShip(ITransport car)
         {
-            this.ship = ship;
+            this.ship = car;
             Draw();
         }
+
             private void Draw()
         {
             Bitmap bmp = new Bitmap(pictureBoxShip.Width, pictureBoxShip.Height);
@@ -73,6 +75,5 @@ namespace WindowsFormsTruck
         {
 
         }
-
     }
 }

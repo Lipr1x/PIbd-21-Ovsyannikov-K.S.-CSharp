@@ -7,14 +7,15 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsTruck
 {
+
     class WarShip : Ship
     {
-
         public Color DopColor { private set; get; }
 
         public bool Radar { private set; get; }
 
         public bool Weapon { private set; get; }
+
 
         public WarShip(int maxSpeed, float weight, Color mainColor, Color dopColor, bool radar, bool weapon) : base(maxSpeed, weight, mainColor, 112, 42)
         {

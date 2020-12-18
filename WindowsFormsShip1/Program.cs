@@ -8,7 +8,6 @@ namespace WindowsFormsTruck
 {
     static class Program
     {
-
         [STAThread]
         static void Main()
         {

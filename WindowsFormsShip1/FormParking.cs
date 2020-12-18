@@ -12,49 +12,75 @@ namespace WindowsFormsTruck
 {
     public partial class FormParking : Form
     {
-        private readonly Parking<ITransport> parking;
+
+        private readonly ParkingCollection parkingCollection;
         public FormParking()
         {
             InitializeComponent();
-            parking = new Parking<ITransport>(pictureBoxParking.Width, pictureBoxParking.Height);
+            parkingCollection = new ParkingCollection(pictureBoxParking.Width, pictureBoxParking.Height);
             Draw();
+        }
+
+        private void ReloadLevels()
+        {
+            int index = listBoxParkings.SelectedIndex;
+            listBoxParkings.Items.Clear();
+            for (int i = 0; i < parkingCollection.Keys.Count; i++)
+            {
+                listBoxParkings.Items.Add(parkingCollection.Keys[i]);
+            }
+            if (listBoxParkings.Items.Count > 0 && (index == -1 || index >= listBoxParkings.Items.Count))
+            {
+                listBoxParkings.SelectedIndex = 0;
+            }
+            else if (listBoxParkings.Items.Count > 0 && index > -1 && index < listBoxParkings.Items.Count)
+            {
+                listBoxParkings.SelectedIndex = index;
+            }
         }
 
         private void Draw()
         {
-            Bitmap bmp = new Bitmap(pictureBoxParking.Width, pictureBoxParking.Height);
-            Graphics gr = Graphics.FromImage(bmp);
-            parking.Draw(gr);
-            pictureBoxParking.Image = bmp;
-        }
-
-        private void buttonSetShip_Click(object sender, EventArgs e)
-        {
-            ColorDialog dialog = new ColorDialog();
-            if (dialog.ShowDialog() == DialogResult.OK)
+            if (listBoxParkings.SelectedIndex > -1)
             {
-                var ship = new Ship(100, 1000, dialog.Color);
-                if (parking + ship)
-                {
-                    Draw();
-                }
-                else
-                {
-                    MessageBox.Show("Парковка переполнена");
-                }
+                Bitmap bmp = new Bitmap(pictureBoxParking.Width, pictureBoxParking.Height);
+                Graphics gr = Graphics.FromImage(bmp);
+                parkingCollection[listBoxParkings.SelectedItem.ToString()].Draw(gr);
+                pictureBoxParking.Image = bmp;
             }
         }
 
-        private void buttonSetWarShip_Click(object sender, EventArgs e)
+        private void buttonAddParking_Click(object sender, EventArgs e)
         {
-            ColorDialog dialog = new ColorDialog();
-            if (dialog.ShowDialog() == DialogResult.OK)
+            if (string.IsNullOrEmpty(textBoxNewLevelName.Text))
             {
-                ColorDialog dialogDop = new ColorDialog();
-                if (dialogDop.ShowDialog() == DialogResult.OK)
+                MessageBox.Show("Введите название парковки", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            parkingCollection.AddParking(textBoxNewLevelName.Text);
+            ReloadLevels();
+        }
+
+        private void buttonDelParking_Click(object sender, EventArgs e)
+        {
+            if (listBoxParkings.SelectedIndex > -1)
+            {
+                if (MessageBox.Show($"Удалить парковку { listBoxParkings.SelectedItem.ToString()}?", "Удаление", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    var ship = new WarShip(100, 1000, dialog.Color, dialogDop.Color, true, true);
-                    if (parking + ship)
+                    parkingCollection.DelParking(textBoxNewLevelName.Text);
+                    ReloadLevels();
+                }
+            }
+        }
+        private void buttonSetShip_Click(object sender, EventArgs e)
+        {
+            if (listBoxParkings.SelectedIndex > -1)
+            {
+                ColorDialog dialog = new ColorDialog();
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    var ship = new Ship(100, 1000, dialog.Color);
+                    if ((parkingCollection[listBoxParkings.SelectedItem.ToString()]) + ship)
                     {
                         Draw();
                     }
@@ -66,22 +92,61 @@ namespace WindowsFormsTruck
             }
         }
 
+        private void buttonSetWarShip_Click(object sender, EventArgs e)
+        {
+            if (listBoxParkings.SelectedIndex > -1)
+            {
+                ColorDialog dialog = new ColorDialog();
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    ColorDialog dialogDop = new ColorDialog();
+                    if (dialogDop.ShowDialog() == DialogResult.OK)
+                    {
+                        var ship = new WarShip(100, 1000, dialog.Color, dialogDop.Color, true, true);
+                        if ((parkingCollection[listBoxParkings.SelectedItem.ToString()]) + ship)
+                        {
+                            Draw();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Парковка переполнена");
+                        }
+                    }
+                }
+            }
+        }
+
         private void buttonTakeShip_Click(object sender, EventArgs e)
         {
-            if (maskedTextBox.Text != "")
+            if (listBoxParkings.SelectedIndex > -1 && maskedTextBox.Text != "")
             {
-                var ship = parking - Convert.ToInt32(maskedTextBox.Text);
+                var ship = parkingCollection[listBoxParkings.SelectedItem.ToString()] - Convert.ToInt32(maskedTextBox.Text);
                 if (ship != null)
                 {
                     FormShip form = new FormShip();
-                    form.SetCar(ship);
+                    form.SetShip(ship);
                     form.ShowDialog();
                 }
                 Draw();
             }
         }
 
+        private void listBoxParkings_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Draw();
+        }
+
         private void FormParking_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBoxParking_Click(object sender, EventArgs e)
         {
 
         }
