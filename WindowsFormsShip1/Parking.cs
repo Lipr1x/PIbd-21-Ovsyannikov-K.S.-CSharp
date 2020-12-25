@@ -7,30 +7,31 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsTruck
 {
-
+  
         public class Parking<T> where T : class, ITransport
         {
-
             private readonly List<T> _places;
 
             private readonly int _maxCount;
 
             private readonly int pictureWidth;
-
+  
             private readonly int pictureHeight;
- 
+
             private readonly int _placeSizeWidth = 300;
 
             private readonly int _placeSizeHeight = 100;
-   
+
             public Parking(int picWidth, int picHeight)
             {
-                int width = picWidth / _placeSizeWidth;
+            int width = picWidth / _placeSizeWidth;
                 int height = picHeight / _placeSizeHeight;
                 _places = new List<T>();
+                _maxCount= width * height;
                 pictureWidth = picWidth;
                 pictureHeight = picHeight;
-            }
+                
+        }
 
         public static bool operator +(Parking<T> p, T ship)
         {
@@ -41,7 +42,7 @@ namespace WindowsFormsTruck
             p._places.Add(ship);
             return true;
         }
- 
+
         public static T operator -(Parking<T> p, int index)
         {
             if (index < -1 || index > p._places.Count)
@@ -58,8 +59,10 @@ namespace WindowsFormsTruck
             DrawMarking(g);
             for (int i = 0; i < _places.Count; ++i)
             {
-                _places[i].SetPosition(5 + i / 5 * _placeSizeWidth + 5, i % 5 *
-               _placeSizeHeight + 15, pictureWidth, pictureHeight);
+                int height = pictureHeight / _placeSizeHeight;
+                int column = i / height;
+                int row = i % height;
+                _places[i].SetPosition(column * _placeSizeWidth + _placeSizeWidth / 8, row * _placeSizeHeight + _placeSizeHeight / 2, pictureWidth, pictureHeight);
                 _places[i].DrawTransport(g);
             }
         }

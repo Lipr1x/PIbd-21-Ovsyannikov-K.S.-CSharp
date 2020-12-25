@@ -10,18 +10,18 @@ namespace WindowsFormsTruck
 
     class WarShip : Ship
     {
+
         public Color DopColor { private set; get; }
 
         public bool Radar { private set; get; }
 
         public bool Weapon { private set; get; }
 
-
         public WarShip(int maxSpeed, float weight, Color mainColor, Color dopColor, bool radar, bool weapon) : base(maxSpeed, weight, mainColor, 112, 42)
         {
             MaxSpeed = maxSpeed;
-            Weight = weight;
-            MainColor = mainColor;
+            Weight = weight; 
+            MainColor = mainColor;  
             DopColor = dopColor;
             Radar = radar; 
             Weapon = weapon; 
@@ -42,17 +42,21 @@ namespace WindowsFormsTruck
 
             if (Radar)
             {
-                if (Weapon)
-                {
-
-                   g.FillRectangle(br, _startPosX + 20, _startPosY - 30, 10, 30);
-                    g.FillEllipse(br, _startPosX + 15, _startPosY-40, 20, 20);
-                    g.FillEllipse(brWhite, _startPosX + 20, _startPosY - 35, 10, 10);
-                    g.DrawLine(slimpen, _startPosX , _startPosY + 10, _startPosX + 115, _startPosY + 10);
-                }
                 g.FillEllipse(brDop, _startPosX + 90, _startPosY - 15, 25, 25);
                 g.DrawLine(pen, _startPosX + 110, _startPosY - 10, _startPosX + 140, _startPosY - 40);
             }
+            if (Weapon)
+            {
+                g.FillRectangle(br, _startPosX + 20, _startPosY - 30, 10, 30);
+                g.FillEllipse(br, _startPosX + 15, _startPosY - 40, 20, 20);
+                g.FillEllipse(brWhite, _startPosX + 20, _startPosY - 35, 10, 10);
+                g.DrawLine(slimpen, _startPosX, _startPosY + 10, _startPosX + 115, _startPosY + 10);
+            }
+        }
+
+            public void SetDopColor(Color color)
+            {
+                DopColor = color;
+            }  
         }
     }
-}

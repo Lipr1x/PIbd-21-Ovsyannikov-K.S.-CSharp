@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             this.pictureBoxParking = new System.Windows.Forms.PictureBox();
-            this.buttonSetShip = new System.Windows.Forms.Button();
-            this.buttonSetWarShip = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.button3 = new System.Windows.Forms.Button();
             this.maskedTextBox = new System.Windows.Forms.MaskedTextBox();
@@ -40,6 +38,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.buttonAddParking = new System.Windows.Forms.Button();
             this.buttonDelParking = new System.Windows.Forms.Button();
+            this.buttonShip = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxParking)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -52,26 +51,6 @@
             this.pictureBoxParking.TabIndex = 0;
             this.pictureBoxParking.TabStop = false;
             this.pictureBoxParking.Click += new System.EventHandler(this.pictureBoxParking_Click);
-            // 
-            // buttonSetShip
-            // 
-            this.buttonSetShip.Location = new System.Drawing.Point(759, 265);
-            this.buttonSetShip.Name = "buttonSetShip";
-            this.buttonSetShip.Size = new System.Drawing.Size(87, 45);
-            this.buttonSetShip.TabIndex = 1;
-            this.buttonSetShip.Text = "припарковать корабль";
-            this.buttonSetShip.UseVisualStyleBackColor = true;
-            this.buttonSetShip.Click += new System.EventHandler(this.buttonSetShip_Click);
-            // 
-            // buttonSetWarShip
-            // 
-            this.buttonSetWarShip.Location = new System.Drawing.Point(759, 316);
-            this.buttonSetWarShip.Name = "buttonSetWarShip";
-            this.buttonSetWarShip.Size = new System.Drawing.Size(86, 40);
-            this.buttonSetWarShip.TabIndex = 2;
-            this.buttonSetWarShip.Text = "припарковать крейсер";
-            this.buttonSetWarShip.UseVisualStyleBackColor = true;
-            this.buttonSetWarShip.Click += new System.EventHandler(this.buttonSetWarShip_Click);
             // 
             // groupBox1
             // 
@@ -157,19 +136,28 @@
             this.buttonDelParking.UseVisualStyleBackColor = true;
             this.buttonDelParking.Click += new System.EventHandler(this.buttonDelParking_Click);
             // 
+            // buttonShip
+            // 
+            this.buttonShip.Location = new System.Drawing.Point(751, 270);
+            this.buttonShip.Name = "buttonShip";
+            this.buttonShip.Size = new System.Drawing.Size(93, 51);
+            this.buttonShip.TabIndex = 9;
+            this.buttonShip.Text = "Создать корабль";
+            this.buttonShip.UseVisualStyleBackColor = true;
+            this.buttonShip.Click += new System.EventHandler(this.buttonShip_Click);
+            // 
             // FormParking
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(877, 516);
+            this.Controls.Add(this.buttonShip);
             this.Controls.Add(this.buttonDelParking);
             this.Controls.Add(this.buttonAddParking);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.textBoxNewLevelName);
             this.Controls.Add(this.listBoxParkings);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.buttonSetWarShip);
-            this.Controls.Add(this.buttonSetShip);
             this.Controls.Add(this.pictureBoxParking);
             this.Name = "FormParking";
             this.Text = "FormParking";
@@ -185,8 +173,6 @@
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBoxParking;
-        private System.Windows.Forms.Button buttonSetShip;
-        private System.Windows.Forms.Button buttonSetWarShip;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.MaskedTextBox maskedTextBox;
@@ -196,5 +182,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button buttonAddParking;
         private System.Windows.Forms.Button buttonDelParking;
+        private System.Windows.Forms.Button buttonShip;
     }
 }

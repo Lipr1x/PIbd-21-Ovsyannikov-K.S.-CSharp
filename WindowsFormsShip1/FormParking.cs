@@ -17,7 +17,7 @@ namespace WindowsFormsTruck
         public FormParking()
         {
             InitializeComponent();
-            parkingCollection = new ParkingCollection(pictureBoxParking.Width, pictureBoxParking.Height);
+            parkingCollection = new ParkingCollection(pictureBoxParking.Width,pictureBoxParking.Height);
             Draw();
         }
 
@@ -27,13 +27,13 @@ namespace WindowsFormsTruck
             listBoxParkings.Items.Clear();
             for (int i = 0; i < parkingCollection.Keys.Count; i++)
             {
-                listBoxParkings.Items.Add(parkingCollection.Keys[i]);
+            listBoxParkings.Items.Add(parkingCollection.Keys[i]);
             }
-            if (listBoxParkings.Items.Count > 0 && (index == -1 || index >= listBoxParkings.Items.Count))
+            if (listBoxParkings.Items.Count > 0 && (index == -1 || index >=listBoxParkings.Items.Count))
             {
                 listBoxParkings.SelectedIndex = 0;
             }
-            else if (listBoxParkings.Items.Count > 0 && index > -1 && index < listBoxParkings.Items.Count)
+            else if (listBoxParkings.Items.Count > 0 && index > -1 && index <listBoxParkings.Items.Count)
             {
                 listBoxParkings.SelectedIndex = index;
             }
@@ -54,7 +54,7 @@ namespace WindowsFormsTruck
         {
             if (string.IsNullOrEmpty(textBoxNewLevelName.Text))
             {
-                MessageBox.Show("Введите название парковки", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Введите название парковки", "Ошибка",MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             parkingCollection.AddParking(textBoxNewLevelName.Text);
@@ -72,49 +72,7 @@ namespace WindowsFormsTruck
                 }
             }
         }
-        private void buttonSetShip_Click(object sender, EventArgs e)
-        {
-            if (listBoxParkings.SelectedIndex > -1)
-            {
-                ColorDialog dialog = new ColorDialog();
-                if (dialog.ShowDialog() == DialogResult.OK)
-                {
-                    var ship = new Ship(100, 1000, dialog.Color);
-                    if ((parkingCollection[listBoxParkings.SelectedItem.ToString()]) + ship)
-                    {
-                        Draw();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Парковка переполнена");
-                    }
-                }
-            }
-        }
 
-        private void buttonSetWarShip_Click(object sender, EventArgs e)
-        {
-            if (listBoxParkings.SelectedIndex > -1)
-            {
-                ColorDialog dialog = new ColorDialog();
-                if (dialog.ShowDialog() == DialogResult.OK)
-                {
-                    ColorDialog dialogDop = new ColorDialog();
-                    if (dialogDop.ShowDialog() == DialogResult.OK)
-                    {
-                        var ship = new WarShip(100, 1000, dialog.Color, dialogDop.Color, true, true);
-                        if ((parkingCollection[listBoxParkings.SelectedItem.ToString()]) + ship)
-                        {
-                            Draw();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Парковка переполнена");
-                        }
-                    }
-                }
-            }
-        }
 
         private void buttonTakeShip_Click(object sender, EventArgs e)
         {
@@ -136,6 +94,29 @@ namespace WindowsFormsTruck
             Draw();
         }
 
+        private void buttonShip_Click(object sender, EventArgs e)
+        {
+            var formShipConfig = new FormShipConfig();
+            formShipConfig.AddEvent(AddShip);
+            formShipConfig.Show();
+        }
+
+        private void AddShip(Vehicle ship)
+        {
+            if (ship != null && listBoxParkings.SelectedIndex > -1)
+            {
+                if ((parkingCollection[listBoxParkings.SelectedItem.ToString()]) + ship)
+                {
+                    Draw();
+                }
+                else
+                {
+                    MessageBox.Show("Корабль не удалось поставить");
+                }
+            }
+        }
+
+ 
         private void FormParking_Load(object sender, EventArgs e)
         {
 

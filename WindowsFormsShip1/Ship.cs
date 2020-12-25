@@ -9,6 +9,7 @@ namespace WindowsFormsTruck
 {
     public class Ship : Vehicle
     {
+
         protected readonly int shipWidth = 112; 
         protected readonly int shipHeight = 42; 
 
@@ -18,7 +19,7 @@ namespace WindowsFormsTruck
             Weight = weight;
             MainColor = mainColor;
         }
-        
+
         protected Ship(int maxSpeed, float weight, Color mainColor, int shipWidth, int shipHeight)
         {
             MaxSpeed = maxSpeed;
@@ -30,7 +31,7 @@ namespace WindowsFormsTruck
         public override void MoveTransport(Enumeration enumeration)
         {
             float step = MaxSpeed * 100 / Weight;
-            int shipLeftIndent = 1; 
+            int shipLeftIndent = 1;
             int shipDownIndent = 12; 
             switch (enumeration)
             {

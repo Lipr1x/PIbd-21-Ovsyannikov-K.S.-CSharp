@@ -17,7 +17,7 @@ namespace WindowsFormsTruck
         protected int _pictureWidth;
 
         protected int _pictureHeight;
- 
+
         public int MaxSpeed { protected set; get; }
 
         public float Weight { protected set; get; }
@@ -30,6 +30,11 @@ namespace WindowsFormsTruck
             _startPosY = y;
             _pictureWidth = width;
             _pictureHeight = height;
+        }
+
+        public void SetMainColor(Color color)
+        {
+            MainColor = color;
         }
         public abstract void DrawTransport(Graphics g);
         public abstract void MoveTransport(Enumeration enumeration);

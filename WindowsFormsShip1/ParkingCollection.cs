@@ -8,11 +8,11 @@ namespace WindowsFormsTruck
 {
     public class ParkingCollection
     {
- 
+
         readonly Dictionary<string, Parking<Vehicle>> parkingStages;
 
         public List<string> Keys => parkingStages.Keys.ToList();
-   
+
         private readonly int pictureWidth;
 
         private readonly int pictureHeight;
@@ -52,6 +52,5 @@ namespace WindowsFormsTruck
                 return null;
             }
         }
-
     }
 }

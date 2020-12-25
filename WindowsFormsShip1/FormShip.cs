@@ -12,7 +12,6 @@ namespace WindowsFormsTruck
 {
     public partial class FormShip : Form
     {
-
         private ITransport ship;
 
         public FormShip()
@@ -20,9 +19,9 @@ namespace WindowsFormsTruck
             InitializeComponent();
         }
 
-        public void SetShip(ITransport car)
+        public void SetShip(ITransport ship)
         {
-            this.ship = car;
+            this.ship = ship;
             Draw();
         }
 
