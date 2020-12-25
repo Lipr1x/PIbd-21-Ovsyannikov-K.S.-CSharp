@@ -9,7 +9,6 @@ namespace WindowsFormsTruck
 {
     public abstract class Vehicle : ITransport
     {
-
         protected float _startPosX;
 
         protected float _startPosY;
@@ -19,7 +18,7 @@ namespace WindowsFormsTruck
         protected int _pictureHeight;
 
         public int MaxSpeed { protected set; get; }
-
+ 
         public float Weight { protected set; get; }
 
         public Color MainColor { protected set; get; }
@@ -36,6 +35,7 @@ namespace WindowsFormsTruck
         {
             MainColor = color;
         }
+
         public abstract void DrawTransport(Graphics g);
         public abstract void MoveTransport(Enumeration enumeration);
     }

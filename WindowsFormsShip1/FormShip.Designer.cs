@@ -28,24 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.pictureBoxShip = new System.Windows.Forms.PictureBox();
+            this.pictureBoxTruck = new System.Windows.Forms.PictureBox();
             this.buttonCreateWarShip = new System.Windows.Forms.Button();
             this.buttonUp = new System.Windows.Forms.Button();
             this.buttonDown = new System.Windows.Forms.Button();
             this.buttonLeft = new System.Windows.Forms.Button();
             this.buttonRight = new System.Windows.Forms.Button();
             this.buttonCreateShip = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxShip)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTruck)).BeginInit();
             this.SuspendLayout();
             // 
-            // pictureBoxShip
+            // pictureBoxTruck
             // 
-            this.pictureBoxShip.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBoxShip.Location = new System.Drawing.Point(0, 0);
-            this.pictureBoxShip.Name = "pictureBoxShip";
-            this.pictureBoxShip.Size = new System.Drawing.Size(884, 461);
-            this.pictureBoxShip.TabIndex = 2;
-            this.pictureBoxShip.TabStop = false;
+            this.pictureBoxTruck.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBoxTruck.Location = new System.Drawing.Point(0, 0);
+            this.pictureBoxTruck.Name = "pictureBoxTruck";
+            this.pictureBoxTruck.Size = new System.Drawing.Size(884, 461);
+            this.pictureBoxTruck.TabIndex = 2;
+            this.pictureBoxTruck.TabStop = false;
             // 
             // buttonCreateWarShip
             // 
@@ -126,18 +126,18 @@
             this.Controls.Add(this.buttonDown);
             this.Controls.Add(this.buttonUp);
             this.Controls.Add(this.buttonCreateWarShip);
-            this.Controls.Add(this.pictureBoxShip);
+            this.Controls.Add(this.pictureBoxTruck);
             this.Name = "FormShip";
             this.Text = "Корабли";
             this.Load += new System.EventHandler(this.FormShip_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxShip)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTruck)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.PictureBox pictureBoxShip;
+        private System.Windows.Forms.PictureBox pictureBoxTruck;
         private System.Windows.Forms.Button buttonCreateWarShip;
         private System.Windows.Forms.Button buttonUp;
         private System.Windows.Forms.Button buttonDown;

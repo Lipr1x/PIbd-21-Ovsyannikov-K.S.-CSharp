@@ -12,15 +12,15 @@ namespace WindowsFormsTruck
 {
     public partial class FormParking : Form
     {
-
         private readonly ParkingCollection parkingCollection;
+
         public FormParking()
         {
             InitializeComponent();
             parkingCollection = new ParkingCollection(pictureBoxParking.Width,pictureBoxParking.Height);
             Draw();
         }
-
+        
         private void ReloadLevels()
         {
             int index = listBoxParkings.SelectedIndex;
@@ -89,6 +89,7 @@ namespace WindowsFormsTruck
             }
         }
 
+
         private void listBoxParkings_SelectedIndexChanged(object sender, EventArgs e)
         {
             Draw();
@@ -116,18 +117,40 @@ namespace WindowsFormsTruck
             }
         }
 
- 
+        private void сохранитьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                if (parkingCollection.SaveData(saveFileDialog.FileName))
+                {
+                    MessageBox.Show("Сохранение прошло успешно", "Результат",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Не сохранилось", "Результат",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void загрузитьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                if (parkingCollection.LoadData(openFileDialog.FileName))
+                {
+                    MessageBox.Show("Загрузили", "Результат", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    ReloadLevels();
+                    Draw();
+                }
+                else
+                {
+                    MessageBox.Show("Не загрузили", "Результат", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
         private void FormParking_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBoxParking_Click(object sender, EventArgs e)
         {
 
         }

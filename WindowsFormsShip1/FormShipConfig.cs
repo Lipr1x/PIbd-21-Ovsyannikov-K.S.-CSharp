@@ -52,6 +52,7 @@ namespace WindowsFormsTruck
                 eventAddShip += ev;
             }
         }
+
       
         private void labelShip_MouseDown(object sender, MouseEventArgs e)
         {
@@ -129,11 +130,6 @@ namespace WindowsFormsTruck
         }
 
         private void FormShipConfig_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void labelMainColor_Click(object sender, EventArgs e)
         {
 
         }

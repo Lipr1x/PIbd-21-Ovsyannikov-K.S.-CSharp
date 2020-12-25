@@ -24,20 +24,19 @@ namespace WindowsFormsTruck
             this.ship = ship;
             Draw();
         }
-
             private void Draw()
         {
-            Bitmap bmp = new Bitmap(pictureBoxShip.Width, pictureBoxShip.Height);
+            Bitmap bmp = new Bitmap(pictureBoxTruck.Width, pictureBoxTruck.Height);
             Graphics gr = Graphics.FromImage(bmp);
             ship.DrawTransport(gr);
-            pictureBoxShip.Image = bmp;
+            pictureBoxTruck.Image = bmp;
         }
 
         private void buttonCreateWarShip_Click(object sender, EventArgs e)
         {
             Random rnd = new Random();
             ship = new WarShip(rnd.Next(100, 300), rnd.Next(1000, 3000), Color.Black, Color.Orange, true, true);
-            ship.SetPosition(rnd.Next(10, 60), rnd.Next(100, 400), pictureBoxShip.Width, pictureBoxShip.Height);
+            ship.SetPosition(rnd.Next(10, 60), rnd.Next(100, 400), pictureBoxTruck.Width, pictureBoxTruck.Height);
             Draw();
         }
 
@@ -45,7 +44,7 @@ namespace WindowsFormsTruck
         {
             Random rnd = new Random();
             ship = new Ship(rnd.Next(100, 300), rnd.Next(1000, 3000), Color.Black);
-            ship.SetPosition(rnd.Next(10, 60), rnd.Next(100, 400), pictureBoxShip.Width, pictureBoxShip.Height);
+            ship.SetPosition(rnd.Next(10, 60), rnd.Next(100, 400), pictureBoxTruck.Width, pictureBoxTruck.Height);
             Draw();
         }
 

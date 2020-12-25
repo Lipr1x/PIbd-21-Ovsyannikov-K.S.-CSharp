@@ -11,17 +11,17 @@ namespace WindowsFormsTruck
         public class Parking<T> where T : class, ITransport
         {
             private readonly List<T> _places;
-
+            
             private readonly int _maxCount;
-
+            
             private readonly int pictureWidth;
-  
+            
             private readonly int pictureHeight;
-
+            
             private readonly int _placeSizeWidth = 300;
-
+            
             private readonly int _placeSizeHeight = 100;
-
+            
             public Parking(int picWidth, int picHeight)
             {
             int width = picWidth / _placeSizeWidth;
@@ -45,7 +45,7 @@ namespace WindowsFormsTruck
 
         public static T operator -(Parking<T> p, int index)
         {
-            if (index < -1 || index > p._places.Count)
+            if (index < -1 || index >= p._places.Count)
             {
                 return null;
             }
@@ -66,7 +66,7 @@ namespace WindowsFormsTruck
                 _places[i].DrawTransport(g);
             }
         }
-
+    
         private void DrawMarking(Graphics g)
             {
                 Pen pen = new Pen(Color.Black, 3);
@@ -80,5 +80,13 @@ namespace WindowsFormsTruck
                    (pictureHeight / _placeSizeHeight) * _placeSizeHeight);
                 }
             }
-        }
+        public T GetNext(int index)
+        {
+            if (index < 0 || index >= _places.Count)
+            {
+                return null;
+            }
+            return _places[index];
+        }   
+    }
 }

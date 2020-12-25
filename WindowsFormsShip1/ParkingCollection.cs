@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,12 +11,13 @@ namespace WindowsFormsTruck
     {
 
         readonly Dictionary<string, Parking<Vehicle>> parkingStages;
-
         public List<string> Keys => parkingStages.Keys.ToList();
 
         private readonly int pictureWidth;
 
         private readonly int pictureHeight;
+
+        private readonly char separator = ':';
 
         public ParkingCollection(int pictureWidth, int pictureHeight)
         {
@@ -50,6 +52,98 @@ namespace WindowsFormsTruck
                     return parkingStages[ind];
                 }
                 return null;
+            }
+        }
+        private void WriteToFile(string text, FileStream stream)
+        {
+            byte[] info = new UTF8Encoding(true).GetBytes(text);
+            stream.Write(info, 0, info.Length);
+        }
+
+        public bool SaveData(string filename)
+        {
+            if (File.Exists(filename))
+            {
+                File.Delete(filename);
+            }
+
+            using (StreamWriter sw = new StreamWriter(filename, false))
+            {
+                sw.WriteLine($"ParkingCollection", sw);
+                foreach (var level in parkingStages)
+                {
+                    sw.WriteLine($"Parking{separator}{level.Key}", sw);
+                    ITransport ship = null;
+                    for (int i = 0; (ship = level.Value.GetNext(i)) != null; i++)
+                    {
+                        if (ship != null)
+                        {
+                            if (ship.GetType().Name == "Ship")
+                            {
+                                sw.Write($"Ship{separator}", sw);
+                            }
+                            if (ship.GetType().Name == "WarShip")
+                            {
+                                sw.Write($"WarShip{separator}", sw);
+                            }
+                            sw.Write(ship + sw.NewLine, sw);
+                        }
+                    }
+                }
+            }
+            return true;
+        }
+
+        public bool LoadData(string filename)
+        {
+            if (!File.Exists(filename))
+            {
+                return false;
+            }
+
+            using (StreamReader sr = new StreamReader(filename))
+            {
+                string line;
+                if ((line = sr.ReadLine()) != null)
+                {
+                    if (line.Contains("ParkingCollection"))
+                    {
+                        parkingStages.Clear();
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                    Vehicle ship = null;
+                    string key = string.Empty;
+                    while ((line = sr.ReadLine()) != null)
+                    {
+                        if (line.Contains("Parking"))
+                        {
+                            key = line.Split(separator)[1];
+                            parkingStages.Add(key, new Parking<Vehicle>(pictureWidth, pictureHeight));
+                            continue;
+                        }
+                        if (string.IsNullOrEmpty(line))
+                        {
+                            continue;
+                        }
+                        if (line.Split(separator)[0] == "Ship")
+                        {
+                            ship = new Ship(line.Split(separator)[1]);
+                        }
+                        else if (line.Split(separator)[0] == "WarShip")
+                        {
+                            ship = new WarShip(line.Split(separator)[1]);
+                        }
+                        var result = parkingStages[key] + ship;
+                        if (!result)
+                        {
+                            return false;
+                        }
+                    }
+                }
+                return true;
             }
         }
     }

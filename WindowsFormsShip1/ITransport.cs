@@ -9,7 +9,9 @@ namespace WindowsFormsTruck
 {
     public interface ITransport
     {
+
         void SetPosition(int x, int y, int width, int height);
+
 
         void MoveTransport(Enumeration enumeration);
 

@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsTruck
 {
-
     class WarShip : Ship
     {
-
         public Color DopColor { private set; get; }
 
         public bool Radar { private set; get; }
@@ -20,11 +18,25 @@ namespace WindowsFormsTruck
         public WarShip(int maxSpeed, float weight, Color mainColor, Color dopColor, bool radar, bool weapon) : base(maxSpeed, weight, mainColor, 112, 42)
         {
             MaxSpeed = maxSpeed;
-            Weight = weight; 
+            Weight = weight; //
             MainColor = mainColor;  
             DopColor = dopColor;
             Radar = radar; 
             Weapon = weapon; 
+        }
+
+        public WarShip(string info) : base(info)
+        {
+            string[] strs = info.Split(separator);
+            if (strs.Length == 6)
+            {
+                MaxSpeed = Convert.ToInt32(strs[0]);
+                Weight = Convert.ToInt32(strs[1]);
+                MainColor = Color.FromName(strs[2]);
+                DopColor = Color.FromName(strs[3]);
+                Radar = Convert.ToBoolean(strs[4]);
+                Weapon = Convert.ToBoolean(strs[5]);
+            }
         }
 
         public override void DrawTransport(Graphics g)
@@ -53,10 +65,15 @@ namespace WindowsFormsTruck
                 g.DrawLine(slimpen, _startPosX, _startPosY + 10, _startPosX + 115, _startPosY + 10);
             }
         }
-
             public void SetDopColor(Color color)
             {
                 DopColor = color;
-            }  
+            }
+        public override string ToString()
+        {
+            return
+           $"{base.ToString()}{separator}{DopColor.Name}{separator}{Radar}{separator}{Weapon}";
+        }
+
         }
     }

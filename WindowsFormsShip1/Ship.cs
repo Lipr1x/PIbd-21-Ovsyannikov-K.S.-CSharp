@@ -9,9 +9,11 @@ namespace WindowsFormsTruck
 {
     public class Ship : Vehicle
     {
-
-        protected readonly int shipWidth = 112; 
+        protected readonly int shipWidth = 112;
         protected readonly int shipHeight = 42; 
+
+        protected readonly char separator = ';';
+
 
         public Ship(int maxSpeed, float weight, Color mainColor)
         {
@@ -20,6 +22,16 @@ namespace WindowsFormsTruck
             MainColor = mainColor;
         }
 
+        public Ship(string info)
+        {
+            string[] strs = info.Split(separator);
+            if (strs.Length == 3)
+            {
+                MaxSpeed = Convert.ToInt32(strs[0]);
+                Weight = Convert.ToInt32(strs[1]);
+                MainColor = Color.FromName(strs[2]);
+            }
+        }
         protected Ship(int maxSpeed, float weight, Color mainColor, int shipWidth, int shipHeight)
         {
             MaxSpeed = maxSpeed;
@@ -31,32 +43,28 @@ namespace WindowsFormsTruck
         public override void MoveTransport(Enumeration enumeration)
         {
             float step = MaxSpeed * 100 / Weight;
-            int shipLeftIndent = 1;
+            int shipLeftIndent = 1; 
             int shipDownIndent = 12; 
             switch (enumeration)
             {
-
                 case Enumeration.Right:
                     if (_startPosX + step < _pictureWidth - shipWidth)
                     {
                         _startPosX += step;
                     }
                     break;
-
                 case Enumeration.Left:
                     if (_startPosX - step > shipLeftIndent)
                     {
                         _startPosX -= step;
                     }
                     break;
-
                 case Enumeration.Up:
                     if (_startPosY - step > shipHeight)
                     {
                         _startPosY -= step;
                     }
                     break;
-
                 case Enumeration.Down:
                     if (_startPosY + step < _pictureHeight - shipDownIndent)
                     {
@@ -91,5 +99,10 @@ namespace WindowsFormsTruck
             g.DrawLine(slimpen, _startPosX-20 , _startPosY - 10, _startPosX+5 , _startPosY-10 );
 
         }
+        public override string ToString()
+        {
+            return $"{MaxSpeed}{separator}{Weight}{separator}{MainColor.Name}";
+        }
+
     }
 }
