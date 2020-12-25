@@ -12,7 +12,6 @@ namespace WindowsFormsTruck
 
         void SetPosition(int x, int y, int width, int height);
 
-
         void MoveTransport(Enumeration enumeration);
 
         void DrawTransport(Graphics g);

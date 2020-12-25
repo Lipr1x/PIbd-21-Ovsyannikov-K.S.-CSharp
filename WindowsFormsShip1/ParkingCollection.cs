@@ -98,7 +98,7 @@ namespace WindowsFormsTruck
         {
             if (!File.Exists(filename))
             {
-                return false;
+                throw new FileNotFoundException();
             }
 
             using (StreamReader sr = new StreamReader(filename))
@@ -112,7 +112,7 @@ namespace WindowsFormsTruck
                     }
                     else
                     {
-                        return false;
+                        throw new FileFormatException(filename);
                     }
                     Vehicle ship = null;
                     string key = string.Empty;
@@ -139,7 +139,7 @@ namespace WindowsFormsTruck
                         var result = parkingStages[key] + ship;
                         if (!result)
                         {
-                            return false;
+                            throw new ParkingShipCannotBeAddedException(key);
                         }
                     }
                 }

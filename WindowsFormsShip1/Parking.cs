@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace WindowsFormsTruck
 {
   
@@ -24,7 +25,7 @@ namespace WindowsFormsTruck
             
             public Parking(int picWidth, int picHeight)
             {
-            int width = picWidth / _placeSizeWidth;
+                int width = picWidth / _placeSizeWidth;
                 int height = picHeight / _placeSizeHeight;
                 _places = new List<T>();
                 _maxCount= width * height;
@@ -37,7 +38,7 @@ namespace WindowsFormsTruck
         {
             if (p._places.Count >= p._maxCount)
             {
-                return false;
+                throw new ParkingOverflowException();
             }
             p._places.Add(ship);
             return true;
@@ -45,9 +46,9 @@ namespace WindowsFormsTruck
 
         public static T operator -(Parking<T> p, int index)
         {
-            if (index < -1 || index >= p._places.Count)
+            if (index <= -1 || index >= p._places.Count)
             {
-                return null;
+                throw new ParkingShipNotFoundException(index);
             }
             T ship = p._places[index];
             p._places.RemoveAt(index);

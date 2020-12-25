@@ -18,7 +18,7 @@ namespace WindowsFormsTruck
         public WarShip(int maxSpeed, float weight, Color mainColor, Color dopColor, bool radar, bool weapon) : base(maxSpeed, weight, mainColor, 112, 42)
         {
             MaxSpeed = maxSpeed;
-            Weight = weight; //
+            Weight = weight;
             MainColor = mainColor;  
             DopColor = dopColor;
             Radar = radar; 
