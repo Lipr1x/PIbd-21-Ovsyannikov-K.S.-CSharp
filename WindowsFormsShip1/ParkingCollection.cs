@@ -9,8 +9,8 @@ namespace WindowsFormsTruck
 {
     public class ParkingCollection
     {
-
         readonly Dictionary<string, Parking<Vehicle>> parkingStages;
+
         public List<string> Keys => parkingStages.Keys.ToList();
 
         private readonly int pictureWidth;
@@ -72,22 +72,18 @@ namespace WindowsFormsTruck
                 sw.WriteLine($"ParkingCollection", sw);
                 foreach (var level in parkingStages)
                 {
-                    sw.WriteLine($"Parking{separator}{level.Key}", sw);
-                    ITransport ship = null;
-                    for (int i = 0; (ship = level.Value.GetNext(i)) != null; i++)
+                    sw.WriteLine($"Parking{separator}{level.Key}");
+                    foreach (ITransport ship in level.Value)
                     {
-                        if (ship != null)
+                        if (ship.GetType().Name == "Ship")
                         {
-                            if (ship.GetType().Name == "Ship")
-                            {
-                                sw.Write($"Ship{separator}", sw);
-                            }
-                            if (ship.GetType().Name == "WarShip")
-                            {
-                                sw.Write($"WarShip{separator}", sw);
-                            }
-                            sw.Write(ship + sw.NewLine, sw);
+                            sw.Write($"Plane{separator}");
                         }
+                        if (ship.GetType().Name == "WarShip")
+                        {
+                            sw.Write($"WarShip{separator}");
+                        }
+                        sw.WriteLine(ship);
                     }
                 }
             }

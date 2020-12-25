@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsTruck
 {
-    class WarShip : Ship
+    class WarShip : Ship, IEquatable<WarShip>
     {
         public Color DopColor { private set; get; }
 
@@ -18,7 +18,7 @@ namespace WindowsFormsTruck
         public WarShip(int maxSpeed, float weight, Color mainColor, Color dopColor, bool radar, bool weapon) : base(maxSpeed, weight, mainColor, 112, 42)
         {
             MaxSpeed = maxSpeed;
-            Weight = weight;
+            Weight = weight; 
             MainColor = mainColor;  
             DopColor = dopColor;
             Radar = radar; 
@@ -75,5 +75,42 @@ namespace WindowsFormsTruck
            $"{base.ToString()}{separator}{DopColor.Name}{separator}{Radar}{separator}{Weapon}";
         }
 
+        public bool Equals(WarShip other)
+        {
+            if (other == null)
+            {
+                return false;
+            }
+            if (GetType().Name != other.GetType().Name)
+            {
+                return false;
+            }
+            if (MaxSpeed != other.MaxSpeed)
+            {
+                return false;
+            }
+            if (Weight != other.Weight)
+            {
+                return false;
+            }
+            if (MainColor != other.MainColor)
+            {
+                return false;
+            }
+            if (DopColor != other.DopColor)
+            {
+                return false;
+            }
+            if (Weapon != other.Weapon)
+            {
+                return false;
+            }
+            if (Radar != other.Radar)
+            {
+                return false;
+            }
+            return true;
         }
+
     }
+}

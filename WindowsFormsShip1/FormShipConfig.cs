@@ -133,5 +133,10 @@ namespace WindowsFormsTruck
         {
 
         }
+
+        private void labelMainColor_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

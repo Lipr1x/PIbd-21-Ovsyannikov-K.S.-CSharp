@@ -147,6 +147,10 @@ namespace WindowsFormsTruck
                     MessageBox.Show(ex.Message, "Переполнение", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     logger.Warn($"Ошибка при добавлении корабля на парковку: парковка переполнена");
                 }
+                catch (ParkingAlreadyHaveThisShipException ex)
+                {
+                    MessageBox.Show(ex.Message, "Дублирование", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message, "Неизвестная ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -211,10 +215,17 @@ namespace WindowsFormsTruck
 
         }
 
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
 
+        private void buttonSort_Click(object sender, EventArgs e)
+        {
+            if (listBoxParkings.SelectedIndex > -1)
+            {
+                parkingCollection[listBoxParkings.SelectedItem.ToString()].Sort();
+                Draw();
+                logger.Info("Сортировка уровней");
+            }
         }
-        
+
+
     }
 }

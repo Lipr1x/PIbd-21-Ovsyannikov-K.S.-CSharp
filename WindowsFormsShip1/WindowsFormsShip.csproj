@@ -68,8 +68,10 @@
       <DependentUpon>FormShipConfig.cs</DependentUpon>
     </Compile>
     <Compile Include="Parking.cs" />
+    <Compile Include="ParkingAlreadyHaveThisShipException.cs" />
     <Compile Include="ParkingCollection.cs" />
     <Compile Include="Ship.cs" />
+    <Compile Include="ShipComparer.cs" />
     <Compile Include="WarShip.cs" />
     <Compile Include="Enumeration.cs" />
     <Compile Include="FormShip.cs">

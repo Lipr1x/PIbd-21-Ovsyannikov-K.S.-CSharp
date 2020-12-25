@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsTruck
 {
-    public class Ship : Vehicle
+    public class Ship : Vehicle, IEquatable<Ship>
     {
         protected readonly int shipWidth = 112;
         protected readonly int shipHeight = 42; 
@@ -99,9 +99,51 @@ namespace WindowsFormsTruck
             g.DrawLine(slimpen, _startPosX-20 , _startPosY - 10, _startPosX+5 , _startPosY-10 );
 
         }
+
         public override string ToString()
         {
             return $"{MaxSpeed}{separator}{Weight}{separator}{MainColor.Name}";
+        }
+
+        public bool Equals(Ship other)
+        {
+            if (other == null)
+            {
+                return false;
+            }
+            if (GetType().Name != other.GetType().Name)
+            {
+                return false;
+            }
+            if (MaxSpeed != other.MaxSpeed)
+            {
+                return false;
+            }
+            if (Weight != other.Weight)
+            {
+                return false;
+            }
+            if (MainColor != other.MainColor)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public override bool Equals(Object obj)
+        {
+            if (obj == null)
+            {
+                return false;
+            }
+            if (!(obj is Ship planeObj))
+            {
+                return false;
+            }
+            else
+            {
+                return Equals(planeObj);
+            }
         }
 
     }
